@@ -1,2 +1,11 @@
 # Project exclude paths
-/.gradle/
+# 깃 이그노어 등록
+
+.gradle
+.idea
+
+application-real-oauth.properties
+
+build
+out
+src/
