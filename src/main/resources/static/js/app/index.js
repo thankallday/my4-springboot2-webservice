@@ -27,8 +27,10 @@ var main = {
             dataType: 'json',
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)
-        }).done(function() {
+        }).done(function(data) {
             alert('글이 등록되었습니다.');
+            var json = $.parseJSON(data);
+            console.info(json); //새로 입력한 키(Long)
             window.location.href = '/';
         }).fail(function (error) {
             alert(JSON.stringify(error));
