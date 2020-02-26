@@ -1,5 +1,5 @@
 // p141
-var main = {
+var main = { //p142-p143 중요. footer.js 에서 include 한다.
     init : function () {
         var _this = this;
         $('#btn-save').on('click', function () {
@@ -31,7 +31,7 @@ var main = {
             alert('글이 등록되었습니다.');
             var json = $.parseJSON(data);
             console.info(json); //새로 입력한 키(Long)
-            window.location.href = '/';
+            window.location.href = '/';  // 1  p141 글 등록이 성공하면 메인페이지(/)로 이동한다
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });

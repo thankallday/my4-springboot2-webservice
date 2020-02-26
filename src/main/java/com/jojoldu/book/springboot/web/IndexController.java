@@ -13,7 +13,7 @@ public class IndexController {
   @GetMapping("/")
   public String index() {
 
-    return "index";      // call index.mustache
+    return "index";      // http://localhost:8080/ 에 대한 응답으로 index.mustache 보내 스프링 부트가 open 하도록 한다.
   }
 
   // 138
