@@ -10,7 +10,7 @@ var main = { //p142-p143 중요. footer.js 에서 include 한다.
             _this.update();
         });
 
-        $('#btn-delete').on('click', function () {
+        $('#btn-delete').on('click', function () { // p158 삭제 버튼 이벤트
             _this.delete();
         });
     },

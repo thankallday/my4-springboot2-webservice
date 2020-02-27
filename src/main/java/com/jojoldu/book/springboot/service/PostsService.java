@@ -58,4 +58,12 @@ public class PostsService {
           .collect(Collectors.toList());
   }
 
+  // p159
+  @Transactional
+  public void delete(Long id) {
+    Posts posts = postsRepository.findById(id)
+      .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+    postsRepository.delete(posts); // p159 또는 postsRepository.deleteById(id); 가능하다
+  }
+
 }
