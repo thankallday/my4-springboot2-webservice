@@ -25,7 +25,7 @@ public class PostsApiController {
 
   }
 
-  // p111 수정 기능
+  // p111 수정 기능 p151
   @PutMapping("/api/v1/posts/{id}")
   public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
     return postsService.update(id, requestDto);

@@ -6,7 +6,7 @@ var main = { //p142-p143 중요. footer.js 에서 include 한다.
             _this.save();
         });
 
-        $('#btn-update').on('click', function () {
+        $('#btn-update').on('click', function () { // p153 1 btn-update 란 id를 가진 html 엘리먼트에 click 이벤트가 발생할 때 update function 을 실행하도록 이벤트를 등록한다
             _this.update();
         });
 
@@ -36,7 +36,7 @@ var main = { //p142-p143 중요. footer.js 에서 include 한다.
             alert(JSON.stringify(error));
         });
     },
-    update : function () {
+    update : function () { // p153
         var data = {
             title: $('#title').val(),
             content: $('#content').val()
@@ -45,13 +45,18 @@ var main = { //p142-p143 중요. footer.js 에서 include 한다.
         var id = $('#id').val();
 
         $.ajax({
-            type: 'PUT',
-            url: '/api/v1/posts/'+id,
+            type: 'PUT', // p153 3 PostsApiController 에 있는 API 에서 @PuttingMapping 으로 선언했기 때문에 PUT 를 사용해야 한다. REST 규약에 맞게 설정된 것이다.
+            // REST 에서 CRUD 는 다음과 같이 HTTP Method 에 매핑 된다.
+            // 생성(create) = POST
+            // 읽기(read) = GET
+            // 수정(update) = PUT
+            // 삭제 (delete) = DELETE
+            url: '/api/v1/posts/'+id,  // p153 4 어느 게시글을 수정할 지 URL Path 로 구분하기 위해 Path 에 id를 추가한다
             dataType: 'json',
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function() {
-            alert('글이 수정되었습니다.');
+            //alert('글이 수정되었습니다.');
             window.location.href = '/';
         }).fail(function (error) {
             alert(JSON.stringify(error));
