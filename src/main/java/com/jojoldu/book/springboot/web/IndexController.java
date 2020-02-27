@@ -2,17 +2,21 @@ package com.jojoldu.book.springboot.web;
 
 // p132 mustache 로 화면 구성하기 - 기본 페이지 만들기
 
+import com.jojoldu.book.springboot.service.PostsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
 
-  @GetMapping("/")
-  public String index() {
+  private final PostsService postsService; //p 150
 
+  @GetMapping("/")
+  public String index(Model model) {  // p150 1 Model: 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있다.
+    model.addAttribute("posts", postsService.findAllDesc()); // findAllDesc() 결과를 "posts" attribute 로 index.mustache 에 전달한다.
     return "index";      // http://localhost:8080/ 에 대한 응답으로 index.mustache 보내 스프링 부트가 open 하도록 한다.
   }
 

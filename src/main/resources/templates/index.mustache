@@ -8,11 +8,27 @@
             <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
         </div>
     </div>
-
+    <!-- 목록 출력 영역 p145 -->
+    <table class="table table-horizontal table-bordered">
+        <thead class="thead-strong">
+        <tr>
+            <th>게시글번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>최종수정일</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#posts}}
+            <!-- posts 라는 List 를 순회한다. java 의 for 문장과 동일 -->
+            <tr>
+                <td>{{id}}</td> <!-- List 에서 뽑아낸 객체의 필드를 사용한다 -->
+                <td><a href="/posts/update/{{id}}">{{title}}</a></td>
+                <td>{{author}}</td>
+                <td>{{modifiedDate}}</td>
+            </tr>
+        {{/posts}}
+        </tbody>
+    </table>
 </div>
-
-<div><a href="https://github.com/thankallday/my4-springboot2-webservice/branches">thankallday GitHub</a></div>
-<div><a href="https://github.com/jojoldu/freelec-springboot2-webservice">교재 source code GitHub</a></div>
-<div><a href="http://localhost:8080/h2-console">h2-console</a></div>
-
 {{>layout/footer}}
