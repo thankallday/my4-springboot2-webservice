@@ -10,16 +10,18 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <a href="/posts/save" role="button" class="btn btn-primary">글 등록, 로그인 테스트 p189</a>
+            <a href="/posts/save" role="button" class="btn btn-primary">글 등록, 로그인 테스트</a>
             {{#userName}}
                 Logged in as: <span id="user">{{userName}}</span>
                 <a href="/logout" class="btn btn-info active" role="button">Logout</a>
             {{/userName}}
             {{^userName}}
-                <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login p189</a>
                 login/oauth2/code/google
-                <!-- a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a -->
+                <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login p209</a>
             {{/userName}}
+            <!-- p209 네이버 로그인 URL 은 redirect-uri={baseUrl}/{action}/oauth2/code/{registrationId} 에 맞춰 자동으로 등록된다 -->
+            <!--  oauth2/authorize/ 까지는 고정이고 마지막 path 만 긱 소셜 로그인 코드를 사용하면 된다 -->
         </div>
     </div>
     <br>
@@ -46,4 +48,8 @@
         </tbody>
     </table>
 </div>
+<hr>
+<div></div>
+<div>update user set role = 'USER'</div>
+<div></div>
 {{>layout/footer}}
