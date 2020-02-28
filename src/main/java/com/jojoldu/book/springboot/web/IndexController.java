@@ -2,6 +2,7 @@ package com.jojoldu.book.springboot.web;
 
 // p132 mustache 로 화면 구성하기 - 기본 페이지 만들기
 
+import com.jojoldu.book.springboot.config.auth.LoginUser;
 import com.jojoldu.book.springboot.config.auth.dto.SessionUser;
 import com.jojoldu.book.springboot.service.PostsService;
 import com.jojoldu.book.springboot.web.dto.PostsListResponseDto;
@@ -23,7 +24,8 @@ public class IndexController {
   private final HttpSession httpSession;   // p190
 
   @GetMapping("/")
-  public String index(Model model) {  // p150 1 Model: 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있다.
+  //public String index(Model model) {  // p150 1 Model: 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있다.
+  public String index(Model model, @LoginUser SessionUser user) { // p 199 1 이제는 어느 콘트롤러든디 @LoginUser 만 사용하면 SessionUser 를 가져 올수 있게 되었다.
 
     model.addAttribute("posts", postsService.findAllDesc()); // findAllDesc() 결과를 "posts" attribute 로 index.mustache 에 전달한다.
 
@@ -32,7 +34,7 @@ public class IndexController {
        1 p190 앞서 작성된 CustomOAuth2UserService 에서 로그인 성공시 세션에 SessionUser 를 저장하도록 구성한다.
        즉, 로그인 성공시 httpSession.getAttribute("user") 에서 값을 가져올 수 있다.
     */
-    SessionUser user = (SessionUser) httpSession.getAttribute("user");
+    //SessionUser user = (SessionUser) httpSession.getAttribute("user"); p199 @LoginUser 어노테이션으로 대치
 
     if (user != null) { // 2 p190 세션에 저장된 값이 있을 때만 model 에 userName 을 등록한다. 세션이 저장된 값이 없으면, model 엔 아무런 값이 없는 상태이므로 로그인 버튼이 보이게 된다.
       model.addAttribute("userName", user.getName());
