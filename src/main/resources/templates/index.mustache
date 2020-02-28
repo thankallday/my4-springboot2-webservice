@@ -8,6 +8,21 @@
             <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/posts/save" role="button" class="btn btn-primary">글 등록, 로그인 테스트 p189</a>
+            {{#userName}}
+                Logged in as: <span id="user">{{userName}}</span>
+                <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+            {{/userName}}
+            {{^userName}}
+                <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                login/oauth2/code/google
+                <!-- a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a -->
+            {{/userName}}
+        </div>
+    </div>
+    <br>
     <!-- 목록 출력 영역 p145 -->
     <table class="table table-horizontal table-bordered">
         <thead class="thead-strong">
