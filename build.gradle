@@ -41,5 +41,10 @@ dependencies {
     compile("org.mariadb.jdbc:mariadb-java-client")
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
-    //testCompile("org.springframework.security:spring-security-test")
+
+    // p215 기존 테스트에 시큐리티 적용하기
+    // See PostsApiControllerTest --> 스프링시큐리티의 설정때문에 인증되지 않은 사용자의 요청은 redirect (HTTP 302 status) 된다.
+    // 이런 API 요청은 임의로 인증된 사용자를 추가하여 API 만 테스트 해 본다
+    // 스프링 시튜리티 테스트를 위한 여러 도구를 지원
+    testCompile("org.springframework.security:spring-security-test")
 }
